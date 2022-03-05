@@ -1,4 +1,4 @@
-﻿// problems , dt 3 March 2022. 1) query with store procedure call, 2, for loop email again and again run , 3, console app running with windows start up or as automatic service
+﻿// problems , dt 3 March 2022. 1) query with store procedure call, 2, for loop email again and again run , 3, console app running with windows start up or as automatic service done
 
 
 using System;
@@ -106,7 +106,7 @@ namespace Send_Email_Console_CS
                                         smtp.Send(mm); // using send property 
                                         Console.WriteLine("Email Sent.");
                                         System.Threading.Thread.Sleep(3000);
-                                        Environment.Exit(0);
+                                        //Environment.Exit(0); // to exit from loop , or exit from envirnoment.
                                     }
                                     catch (Exception e)
                                     {
@@ -118,7 +118,7 @@ namespace Send_Email_Console_CS
 
                             else
                             {
-                                Console.WriteLine("Error");
+                                Console.WriteLine("Date Not Matched");
 
                             }
                         }
