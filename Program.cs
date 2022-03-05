@@ -1,5 +1,7 @@
-﻿using System;
+﻿// problems , dt 3 March 2022. 1) query with store procedure call, 2, for loop email again and again run , 3, console app running with windows start up or as automatic service
 
+
+using System;
 using System.IO;
 using System.Net;
 using System.Net.Mail;
@@ -43,8 +45,13 @@ namespace Send_Email_Console_CS
                 Console.WriteLine("Error: " + e.Message);
             }
 
-           // using (SqlCommand command = new SqlCommand("SELECT * FROM cases", conn))
-            using (SqlCommand command = new SqlCommand("SELECT ReminderEmailDate FROM courts where courttype = 'TOLP' and reminderemaildate is not null", conn)) //is jaga per store procedure call kerwa lo jo sab ke sab reminder dates pick ker le courttype IN (TOLP,XYZ,ABC)
+            // using (SqlCommand command = new SqlCommand("SELECT * FROM cases", conn))
+            // using (SqlCommand command = new SqlCommand("SELECT ReminderEmailDate FROM courts where courttype = 'TOLP' and reminderemaildate is not null", conn)) //is jaga per store procedure call kerwa lo jo sab ke sab reminder dates pick ker le courttype IN (TOLP,XYZ,ABC)
+
+            SqlCommand command = conn.CreateCommand(); //connect through store procedure.
+            command.CommandText = "reminder_date";
+            command.CommandType = System.Data.CommandType.StoredProcedure;
+
             {
                 using (SqlDataReader reader = command.ExecuteReader())
                 {
@@ -52,11 +59,11 @@ namespace Send_Email_Console_CS
                     {
                         for (int i = 0; i < reader.FieldCount; i++)
                         {
-                            
-                           var reminder_date =  reader.GetValue(i);
-                           var reminderdateF = reminder_date.ToString(); //is ke under bi de saktey hain or dot laga ker bi reference ker saktey hain
-                           var reminder_dateformat = DateTime.Parse(reminderdateF);
-                           DateTime currentdate = DateTime.Today;
+
+                            var reminder_date = reader.GetValue(i);
+                            var reminderdateF = reminder_date.ToString(); //is ke under bi de saktey hain or dot laga ker bi reference ker saktey hain
+                            var reminder_dateformat = DateTime.Parse(reminderdateF);
+                            DateTime currentdate = DateTime.Today;
 
 
 
@@ -72,8 +79,8 @@ namespace Send_Email_Console_CS
 
 
 
-                               // Console.WriteLine("Enter Subject:");
-                               // string subject = Console.ReadLine().Trim();
+                                // Console.WriteLine("Enter Subject:");
+                                // string subject = Console.ReadLine().Trim();
 
                                 string subject = "Console Reminder Email From System Subject";
 
@@ -113,15 +120,15 @@ namespace Send_Email_Console_CS
                             {
                                 Console.WriteLine("Error");
 
-                                }
                             }
-
-
                         }
 
 
                     }
+
+
                 }
+            }
 
 
                
