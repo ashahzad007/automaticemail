@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31911.196
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Send_Email_Console_CS", "Send_Email_Console_CS.csproj", "{BDD44D48-9F7B-4AFE-AF5F-A12F563DC766}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BDD44D48-9F7B-4AFE-AF5F-A12F563DC766}.Debug|x86.ActiveCfg = Debug|x86
+		{BDD44D48-9F7B-4AFE-AF5F-A12F563DC766}.Debug|x86.Build.0 = Debug|x86
+		{BDD44D48-9F7B-4AFE-AF5F-A12F563DC766}.Release|x86.ActiveCfg = Release|x86
+		{BDD44D48-9F7B-4AFE-AF5F-A12F563DC766}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2B90B92E-FA7E-494F-A1A0-3A226FBF5D3F}
+	EndGlobalSection
+EndGlobal
