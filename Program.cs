@@ -44,7 +44,7 @@ namespace Send_Email_Console_CS
             }
 
            // using (SqlCommand command = new SqlCommand("SELECT * FROM cases", conn))
-            using (SqlCommand command = new SqlCommand("SELECT ReminderEmailDate FROM courts where courttype = 'TOLP' and reminderemaildate is not null", conn))
+            using (SqlCommand command = new SqlCommand("SELECT ReminderEmailDate FROM courts where courttype = 'TOLP' and reminderemaildate is not null", conn)) //is jaga per store procedure call kerwa lo jo sab ke sab reminder dates pick ker le courttype IN (TOLP,XYZ,ABC)
             {
                 using (SqlDataReader reader = command.ExecuteReader())
                 {
@@ -55,12 +55,12 @@ namespace Send_Email_Console_CS
                             
                            var reminder_date =  reader.GetValue(i);
                             var reminderdateF = reminder_date.ToString(); //is ke under bi de saktey hain or dot laga ker bi reference ker saktey hain
-                            var datformat = DateTime.Parse(reminderdateF);
-                            DateTime dt3 = DateTime.Today;
+                            var reminder_dateformat = DateTime.Parse(reminderdateF);
+                            DateTime currentdate = DateTime.Today;
 
 
 
-                            if (datformat == dt3) //date ko date ke saat hi match kerwa lo , complier samj jata hai , string /date khabi bi match nai ho ga ..."" yeah lag jata hai string main
+                            if (reminder_dateformat == currentdate) //date ko date ke saat hi match kerwa lo , complier samj jata hai , string /date khabi bi match nai ho ga ..."" yeah lag jata hai string main
 
                             {
 
