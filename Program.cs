@@ -54,9 +54,9 @@ namespace Send_Email_Console_CS
                         {
                             
                            var reminder_date =  reader.GetValue(i);
-                            var reminderdateF = reminder_date.ToString(); //is ke under bi de saktey hain or dot laga ker bi reference ker saktey hain
-                            var reminder_dateformat = DateTime.Parse(reminderdateF);
-                            DateTime currentdate = DateTime.Today;
+                           var reminderdateF = reminder_date.ToString(); //is ke under bi de saktey hain or dot laga ker bi reference ker saktey hain
+                           var reminder_dateformat = DateTime.Parse(reminderdateF);
+                           DateTime currentdate = DateTime.Today;
 
 
 
@@ -133,3 +133,22 @@ namespace Send_Email_Console_CS
         }
     }
 
+
+
+//DateTime dt1 = DateTime.Parse("03/05/2022"); // is ke under apna string variable bi rekh saktey hain  , date ke under DateTime dt1 = DateTime.Parse(xyz);
+//exampl
+//    var reminderdateF = reminder_date.ToString(); //is ke under bi de saktey hain or dot laga ker bi reference ker saktey hain
+//var reminder_dateformat = DateTime.Parse(reminderdateF);
+
+
+//DateTime dt2 = DateTime.Now;
+//DateTime dt3 = DateTime.Today; // for no time and AM, PM
+
+//if (dt1.Date == dt2.Date)
+//{
+//    Console.WriteLine("It's a macth with date format"); //It's a later date
+//}
+//else
+//{
+//    Console.WriteLine("It's not matched date");
+//}
