@@ -64,7 +64,7 @@ namespace Send_Email_Console_CS
                     while (reader.Read()) //total 8 columns read one by then come to next row ID.
                     {
                         for (int i = 0; i < reader.FieldCount; i+=8) //i++ //very best approch to read next record id. otherwise its read all the columns and reminder email will be sent again and again
-                        {
+                        {  //for loop reader.FiledCount reads all the column one by one  through i++, not row. for example if you have 8 column its reads 8, if you have 24 column its reads 24. through 0 to 23 array
                             var value1 = reader.GetValue(i);
                             var reminder_date = reader.GetValue(7);
                             //var data = reader.GetName(9);
