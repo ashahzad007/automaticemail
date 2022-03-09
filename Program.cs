@@ -1,5 +1,9 @@
 ﻿// problems , dt 3 March 2022. 1) query with store procedure call, 2, for loop email again and again run done, 3, console app running with windows start up or as automatic service done
 //subject dynamic store procedure se description column ka aye , court type aye , reminder date aye , case id , case no , start date etc , yani total case ki information aye.
+//automatic email by all of reminderdates if matches but creating next record throgh sql.reader. done
+// how to add TOPL,Courttype,dESCRIPTION , and add these two variable in email body also.
+// how to add tow varaibles data into one variavle throgh console.write or any other method.
+// good work done by you Amir. Appricated. 09-March-2022
 
 
 using System;
@@ -57,23 +61,26 @@ namespace Send_Email_Console_CS
             {
                 using (SqlDataReader reader = command.ExecuteReader())
                 {
-                    while (reader.Read())
+                    while (reader.Read()) //total 8 columns read one by then come to next row ID.
                     {
-                        for (int i = 0; i < reader.FieldCount; i++)
+                        for (int i = 0; i < reader.FieldCount; i+=8) //i++ //very best approch to read next record id. otherwise its read all the columns and reminder email will be sent again and again
                         {
-
-                            //var reminder_date = reader.GetValue(i);
+                            var value1 = reader.GetValue(i);
+                            var reminder_date = reader.GetValue(7);
                             //var data = reader.GetName(9);
                             // var data1 = reader.GetValue(9);
-                            var caseNo = reader.GetValue(21);
-                            var courttype = reader.GetValue(1);
+                            var caseNo = reader.GetValue(1);
+                            var courttype = reader.GetValue(2);
+                            var currentstatus = reader.GetValue(3);
                             var courttypedesc = courttype.ToString();
-                            var desc = reader.GetValue(23);
+                            var desc = reader.GetValue(4);
                             var descstring = desc.ToString();
                             var myString = descstring.Replace("\r\n", string.Empty);
                             var yourstring = descstring.Replace(System.Environment.NewLine, string.Empty);
-                            var reminderdate_columnName = reader.GetName(9);
-                            var reminder_date = reader.GetValue(9);
+                            //var reminderdate_columnName = reader.GetName(7);
+                            var stayvalidity = reader.GetValue(5);
+                            var amount_confornted = reader.GetValue(6);
+                           // var reminder_date = reader.GetValue(9);
                             var reminderdateF = reminder_date.ToString(); //is ke under bi de saktey hain or dot laga ker bi reference ker saktey hain
                             var reminder_dateformat = DateTime.Parse(reminderdateF);
                             DateTime currentdate = DateTime.Today;
@@ -98,12 +105,12 @@ namespace Send_Email_Console_CS
 
                                 //string subject = "Console Reminder Email From System Subject";
 
-                                var subject = myString;
+                                var subject = courttypedesc;
 
                                 //Console.WriteLine("Enter Body:");
                                 //string body = Console.ReadLine().Trim();
 
-                                string body = courttypedesc;
+                                string body = myString;
 
                                 using (MailMessage mm = new MailMessage(ConfigurationManager.AppSettings["FromEmail"], to)) //system gets to email and from email from appconfig file
                                     try
@@ -175,3 +182,19 @@ namespace Send_Email_Console_CS
 //{
 //    Console.WriteLine("It's not matched date");
 //}
+
+//------------------DecoderReplacementFallback
+
+//    var stringTest = "\r Test\nThe Quick\r\n brown fox";
+
+//Console.WriteLine("Original is:");
+//Console.WriteLine(stringTest);
+//Console.WriteLine("-------------");
+
+//stringTest = stringTest.Trim().Replace("\r", string.Empty);
+//stringTest = stringTest.Trim().Replace("\n", string.Empty);
+//stringTest = stringTest.Replace(Environment.NewLine, string.Empty);
+
+//Console.WriteLine("Output is : ");
+//Console.WriteLine(stringTest);
+//Console.ReadLine();
