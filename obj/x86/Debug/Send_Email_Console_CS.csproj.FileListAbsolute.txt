@@ -23,3 +23,4 @@ C:\Users\amir.shahzad\Desktop\Send_Email_Console_CS\bin\Debug\Send_Email_Console
 C:\Users\amir.shahzad\Desktop\Send_Email_Console_CS\obj\x86\Debug\Send_Email_Console_CS.csproj.CoreCompileInputs.cache
 C:\Users\amir.shahzad\Desktop\Send_Email_Console_CS\obj\x86\Debug\Send_Email_Console_CS.exe
 C:\Users\amir.shahzad\Desktop\Send_Email_Console_CS\obj\x86\Debug\Send_Email_Console_CS.pdb
+C:\Users\amir.shahzad\Desktop\Send_Email_Console_CS\obj\x86\Debug\Send_Email_Console_CS.csproj.AssemblyReference.cache
